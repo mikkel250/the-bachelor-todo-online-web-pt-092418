@@ -12,7 +12,7 @@ def get_first_name_of_season_winner(data, season)
   				     
 	  				if hashes[:status] == "Winner"
 
-				      winner_name = hashes[:name].split[0]
+				      winner_name = hashes[:name]
 	  					winner_name_split = winner_name.split
 	  					return winner_name_split[0]
   					   # need to split and return only first name
