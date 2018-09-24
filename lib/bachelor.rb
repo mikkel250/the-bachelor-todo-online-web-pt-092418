@@ -42,12 +42,8 @@ def count_contestants_by_hometown(data, hometown)
  count = 0
  data.each do |seasons, contestant_array|
 			contestant_array.each do |hashes| 	#this is an array filled with hashes
-				hashes.each do |stats, strings|    
-  				if hashes["hometown"] == hometown 
-
-			      count += 1	  					
-  				end
-  			end  		
+				if hashes["hometown"] == hometown
+				  count += 1
   		end  		
   	end
   end 
@@ -55,9 +51,23 @@ def count_contestants_by_hometown(data, hometown)
 end
 
 def get_occupation(data, hometown)
-  # code here
+  data.each do |seasons, contestant_array|
+			contestant_array.each do |hashes| 	#this is an array filled with hashes
+				if hashes["hometown"] == hometown
+				  return hashes["occupation"]
+  		end  		
+  	end
+  end 
 end
 
 def get_average_age_for_season(data, season)
-  # code here
+   ages = []
+   data.each do |seasons, contestant_array|
+			if seasons == season
+			contestant_array.each do |hashes| 	#this is an array filled with hashes				
+				  ages << hashes["age"].to_f
+  		end  		
+  	end
+  end
+  (ages.reduce(:+) / ages.length).round
 end
