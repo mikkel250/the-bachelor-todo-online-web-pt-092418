@@ -61,11 +61,13 @@ def get_occupation(data, hometown)
 end
 
 def get_average_age_for_season(data, season)
+   ages = []
    data.each do |seasons, contestant_array|
-			contestant_array.each do |hashes| 	#this is an array filled with hashes
-				if hashes["hometown"] == hometown
-				  return hashes["occupation"]
+			if seasons == season
+			contestant_array.each do |hashes| 	#this is an array filled with hashes				
+				  ages << hashes["age"].to_f
   		end  		
   	end
-  end 
+  end
+  ages.reduce(:+).to_f / nums.size
 end
